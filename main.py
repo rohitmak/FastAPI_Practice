@@ -25,3 +25,21 @@ def get_users_01():
 @app.get("/users")
 def get_users_01():
     return ["Virat", "Hardik"]
+
+# Enums
+
+from enum import Enum
+
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+@app.get("/models/{model_name}")
+def get_model_name(model_name: ModelName):
+    if model_name is ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning"}
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "Computer Vision"}
+    
+    return {"model_name": model_name, "message": "Have some residuals"}
