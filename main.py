@@ -43,3 +43,10 @@ def get_model_name(model_name: ModelName):
         return {"model_name": model_name, "message": "Computer Vision"}
     
     return {"model_name": model_name, "message": "Have some residuals"}
+
+# Path inside Path Parameters (using Starlette)
+
+@app.get("/files/{file_path:path}")
+def get_file_path(file_path: str):
+    return {"file_path": file_path}
+
